@@ -77,7 +77,7 @@ void deserialize_row(void *source, Row* destination) {
   memcpy(&(destination->email), (char*)source + EMAIL_OFFSET, EMAIL_SIZE);
 }
 
-void* row_slot(Table* table, uint32_t row_num) {
+void* row_slot(Table* table, uint32_t row_num) { // wyznacza miejsce w pamięci na dany wiersz.
   uint32_t page_num = row_num / ROWS_PER_PAGE;
   void *page = table->pages[page_num];
   if (page == NULL) {
@@ -108,7 +108,7 @@ void free_table(Table* table) {
 }
 
 InputBuffer* new_input_buffer() {
-  InputBuffer* input_buffer = (InputBuffer*)malloc(sizeof(InputBuffer));
+  InputBuffer* input_buffer = (InputBuffer*)malloc(sizeof(InputBuffer)); 
   input_buffer->buffer = NULL;
   input_buffer->buffer_length = 0;
   input_buffer->input_length = 0;
